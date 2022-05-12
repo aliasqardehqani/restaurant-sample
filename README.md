@@ -3,7 +3,7 @@
 Restaurant shopping site.
 This project is written in two forms, API and template, whose template mode has no graphic design.
 
-Workspace :\n
+Workspace :
 {
     'rest_framework',
     'rest_framework_simplejwt',
