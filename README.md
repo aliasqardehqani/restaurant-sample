@@ -1,2 +1,14 @@
 # restaurant-sample
-That is my first  backenc site.
+
+Restaurant shopping site.
+This project is written in two forms, API and template, whose template mode has no graphic design.
+
+Workspace :
+{
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'django_filters',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+}
