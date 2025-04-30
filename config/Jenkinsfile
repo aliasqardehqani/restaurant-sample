@@ -16,6 +16,9 @@ pipeline {
                 echo "🧪 Running Django model tests..."
                 sh '''
                     cd restaurant-sample/config
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install --upgrade pip
                     pip install -r requirements.txt
                     python manage.py makemigrations --noinput
                     python manage.py migrate --noinput

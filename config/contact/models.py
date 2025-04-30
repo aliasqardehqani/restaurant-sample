@@ -14,8 +14,4 @@ class Contact(models.Model):
 
 
     def __str__(self):
-        fields = [
-            self.first_name + self.last_name,
-            self.email
-        ]
-        return fields
+        return f"{self.first_name} {self.last_name} - {self.email}"
