@@ -11,6 +11,19 @@ pipeline {
             }
         }
 
+        stage('Run Tests') {
+            steps {
+                echo "🧪 Running Django model tests..."
+                sh '''
+                    cd restaurant-sample/config
+                    pip install -r requirements.txt
+                    python manage.py makemigrations --noinput
+                    python manage.py migrate --noinput
+                    python manage.py test
+                '''
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 echo "🐳 Building Docker image..."
