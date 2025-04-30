@@ -1,14 +1,12 @@
 pipeline {
     agent any
 
-
     stages {
         stage('Clone Repo') {
             steps {
                 echo "📥 Cloning the repository... (handled by Jenkins SCM)"
                 sh '''
                     git clone https://github.com/aliasqardehqani/restaurant-sample.git
-                    git checkout Feat/ci_cd
                 '''
             }
         }
@@ -16,18 +14,22 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "🐳 Building Docker image..."
-                sh 'docker build -t restaurant-con:1.0.0 .'
+                sh '''
+                    cd restaurant-sample/config
+                    docker build -t restaurant-con:1.0.0 .
+                '''
             }
         }
-
 
         stage('Run Docker Image') {
             steps {
-                echo "🚀 Starting services using docker-compose..."
-                sh 'docker run -d -p 8008:8008 restaurant-con:1.0.0'
+                echo "🚀 Starting services using docker image..."
+                sh '''
+                    cd restaurant-sample/config
+                    docker run -d -p 8008:8008 restaurant-con:1.0.0
+                '''
             }
         }
-
     }
 
     post {
