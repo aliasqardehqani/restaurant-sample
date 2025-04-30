@@ -1,6 +1,5 @@
 from django.test import TestCase
-from contact.models import Contact   
-from food.models import Foods, Comment 
+from .models import Foods, Comment 
 
 class FoodsModelTest(TestCase):
     def setUp(self):
