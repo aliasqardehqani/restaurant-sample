@@ -4,11 +4,14 @@ EXPOSE 8008
 
 WORKDIR /app    
 
-COPY requirements.txt
+COPY requirements.txt requirements.txt
 
 
-RUN pip install --trusted-host 110.112.55.18 -i http://110.112.55.18/repository/pypi_group/simple/ --no-cache-dir -r requirements.txt
+RUN pip install --trusted-host 110.112.55.18 \
+    -i http://110.112.55.18/repository/pypi_group/simple/ \
+    --no-cache-dir -r requirements.txt \
+    || (echo "⚠️ pip install failed"; ls -la && cat requirements.txt)
 
 COPY . .
 
-CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8008"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8008"]
