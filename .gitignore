@@ -1,0 +1,30 @@
+# Created by https://www.gitignore.io
+# Thumbnails
+._*
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+
+node_modules/
+
+.env
+db.sqlite3
+migrations/
+rabbitmq/
+logs/
+
+.vscode/
+
